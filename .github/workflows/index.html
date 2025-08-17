@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Empire Builder 5D Prototype</title>
+<style>
+  /* Base styling */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #0a0a0a, #000000 85%);
+    color: #fff;
+    overflow-x: hidden;
+    perspective: 1000px;
+  }
+
+  h1, h2 {
+    text-align: center;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ffd700, #ffea8c, #ffb700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255,215,0,0.7);
+  }
+
+  /* Glass 5D panels with animated gold borders */
+  .panel {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 600px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  }
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 22px;
+    background: linear-gradient(45deg, #ffd700, #ffcc00, #ffea8c);
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.7;
+    animation: glowBorder 3s linear infinite alternate;
+  }
+  @keyframes glowBorder {
+    0% { opacity: 0.6; transform: rotate(0deg); }
+    50% { opacity: 0.9; transform: rotate(180deg); }
+    100% { opacity: 0.6; transform: rotate(360deg); }
+  }
+  .panel:hover {
+    transform: translateY(-10px) scale(1.03) rotateX(2deg);
+    box-shadow: 0 0 80px rgba(255, 215, 0, 0.4);
+  }
+
+  /* Glowing interactive button */
+  .approve-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ffae00);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .approve-btn:hover {
+    background: linear-gradient(135deg, #ffea8c, #ffd700);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+    transform: scale(1.08);
+  }
+  .approve-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-25deg);
+    transition: left 0.5s;
+  }
+  .approve-btn:hover::after {
+    left: 125%;
+  }
+
+  /* Floating orbs (multi-layered for 5D effect) */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.25;
+    animation: float 25s infinite ease-in-out;
+  }
+  .orb.gold { background: #ffd700; width: 250px; height: 250px; top: 5%; left: 20%; animation-duration: 28s; }
+  .orb.purple { background: #a855f7; width: 200px; height: 200px; bottom: 15%; right: 15%; animation-duration: 35s; }
+  .orb.cyan { background: #22d3ee; width: 300px; height: 300px; top: 60%; left: -10%; animation-duration: 30s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px) }
+    25% { transform: translateY(-30px) translateX(20px) }
+    50% { transform: translateY(-60px) translateX(-20px) }
+    75% { transform: translateY(-30px) translateX(20px) }
+  }
+
+  /* Parallax effect for panels */
+  .panel:hover { transform: translateY(-15px) scale(1.05) rotateX(3deg) rotateY(2deg); }
+
+</style>
+</head>
+<body>
+
+<!-- Floating background orbs -->
+<div class="orb gold"></div>
+<div class="orb purple"></div>
+<div class="orb cyan"></div>
+
+<h1>⚡ Golden Empire Builder</h1>
+<h2>Minimal. Futuristic. 5D. Profitable.</h2>
+
+<div class="panel">
+  <h3>🔥 Trending Product</h3>
+  <p>Luxury Smartwatch with gold accents — top viral trend today.</p>
+  <button class="approve-btn">Approve & Launch</button>
+</div>
+
+<div class="panel">
+  <h3>🚀 AI Generated Ad</h3>
+  <p>“Upgrade Your Lifestyle with Luxury Precision. Shop Now!”</p>
+  <button class="approve-btn">Approve & Post</button>
+</div>
+
+<div class="panel">
+  <h3>📈 Campaign Summary</h3>
+  <p>Estimated Profit This Week: $1,250. Click Approve to auto-scale top-performing ads.</p>
+  <button class="approve-btn">Approve & Scale</button>
+</div>
+
+</body>
+</html>
